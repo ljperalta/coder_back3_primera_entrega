@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const uploader = require('../utils/uploader.js');
+const petsController = require('../controllers/pets.controller.js');
 
 router.get('/', petsController.getAllPets);
 router.post('/', petsController.createPet);

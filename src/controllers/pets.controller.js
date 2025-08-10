@@ -1,7 +1,7 @@
 const { model } = require("mongoose");
 const PetDTO = require("../dto/Pet.dto.js");
 const { petsService } = require("../services/index.js");
-const __dirname = require("../utils/index.js");
+const dirname = require("../utils/index.js");
 
 const getAllPets = async(req,res)=>{
     const pets = await petsService.getAll();
@@ -38,7 +38,7 @@ const createPetWithImage = async(req,res) =>{
         name,
         specie,
         birthDate,
-        image:`${__dirname}/../public/img/${file.filename}`
+        image:`${dirname}/../public/img/${file.filename}`
     });
     console.log(pet);
     const result = await petsService.create(pet);
