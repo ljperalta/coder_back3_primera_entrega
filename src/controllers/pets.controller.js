@@ -1,6 +1,5 @@
-const { model } = require("mongoose");
 const PetDTO = require("../dto/Pet.dto.js");
-const { petsService } = require("../services/index.js");
+const petsService = require("../services/index.js");
 const dirname = require("../utils/index.js");
 
 const getAllPets = async(req,res)=>{
