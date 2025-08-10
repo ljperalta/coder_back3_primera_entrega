@@ -1,5 +1,5 @@
 require('dotenv').config();
-const listEndpoints = require('express-list-endpoints');
+//const listEndpoints = require('express-list-endpoints');
 const { server } = require('./app'); 
 const port = process.env.PORT || 8081;
 

@@ -1,9 +1,9 @@
-import __dirname from "./index.js";
-import multer from 'multer';
+const dirname = require("./index.js");
+const multer = require('multer');
 
 const storage = multer.diskStorage({
     destination:function(req,file,cb){
-        cb(null,`${__dirname}/../public/img`)
+        cb(null,`${dirname}/../public/img`)
     },
     filename:function(req,file,cb){
         cb(null,`${Date.now()}-${file.originalname}`)
@@ -12,4 +12,4 @@ const storage = multer.diskStorage({
 
 const uploader = multer({storage})
 
-export default uploader;
+module.exports = uploader;

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-import uploader from '../utils/uploader.js';
+const uploader = require('../utils/uploader.js');
 
 router.get('/', petsController.getAllPets);
 router.post('/', petsController.createPet);
