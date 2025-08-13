@@ -4,6 +4,7 @@ const dirname = require("../utils/index.js");
 
 const getAllPets = async(req,res)=>{
     const pets = await petsService.getAll();
+    console.log("pets");
     res.send({status:"success",payload:pets})
 }
 
