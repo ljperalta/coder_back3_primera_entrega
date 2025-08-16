@@ -1,4 +1,5 @@
 const { faker } = require('@faker-js/faker');
+const { petsService, usersService} = require("../services/index.js");
 const { hashPassword } = require('./pass.js');
 
 const generateMockPet = () => ({

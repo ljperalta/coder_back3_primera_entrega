@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const collection = 'Pets';
+const collection = 'Pets_Mock';
 
 const schema = new mongoose.Schema({
     name:{

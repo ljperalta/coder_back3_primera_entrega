@@ -1,5 +1,5 @@
 const express = require('express');
-const routes = require("./routes/index.js");
+const routes = require("./routes/mocks.router.js");
 const listEndpoints = require('express-list-endpoints');
 const errorHandler = require('./utils/errorHandler.js');
 require('./bd/conexion.js');
