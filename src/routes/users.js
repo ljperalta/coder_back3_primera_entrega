@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { generateUsers } = require('../utils/mocking.js');
+const { petsService, usersService} = require("../services/index.js");
+const { generatePets, generateUsers } = require('../utils/mocking.js');
 
 router.get('/', (req, res, next) => {
     try {
@@ -16,12 +17,13 @@ router.post("/generateData", async (req, res) => {
       console.log("Generating mock data...");
         const { users = 0, pets = 0 } = req.body;
 
-        let createdUsers = [];
-        let createdPets = [];
+        let createdUsers = 0;
+        let createdPets = 0;
 
         if (users > 0) {
             const mockUsers = generateUsers(users);
             for (let user of mockUsers) {
+                createdUsers++
                 await usersService.create(user);
             }
         }
@@ -29,6 +31,7 @@ router.post("/generateData", async (req, res) => {
         if (pets > 0) {
             const mockPets = generatePets(pets);
             for (let pet of mockPets) {
+                createdPets++
                 await petsService.create(pet);
             }
         }
@@ -36,8 +39,8 @@ router.post("/generateData", async (req, res) => {
         res.json({
             status: 'success',
             message: 'Datos generados e insertados correctamente',
-            usersInserted: createdUsers.length,
-            petsInserted: createdPets.length
+            usersInserted: createdUsers,
+            petsInserted: createdPets
         });
     } catch (error) {
         res.status(500).json({ status: 'error', error: error.message });
