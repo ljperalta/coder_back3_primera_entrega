@@ -3,9 +3,9 @@ const router = express.Router();
 const { petsService, usersService} = require("../services/index.js");
 const { generatePets, generateUsers } = require('../utils/mocking.js');
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
-        const users = generateUsers(50);
+        const users = await usersService.getAll();
         res.json({ status: 'success', payload: users });
     } catch (error) {
         next(error);
