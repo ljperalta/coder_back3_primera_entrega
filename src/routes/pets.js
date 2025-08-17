@@ -4,7 +4,9 @@ const uploader = require('../utils/uploader.js');
 const petsController = require('../controllers/pets.controller.js');
 const { generatePets } = require('../utils/mocking.js');
 
-router.get('/', petsController.getAllPets);
+router.get('/', (req, res, next) => {
+    petsController.getAllPets(req, res, next);
+});
 
 router.get('/mocking', (req, res, next) => {
     try {

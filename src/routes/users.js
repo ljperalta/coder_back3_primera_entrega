@@ -12,6 +12,15 @@ router.get('/', (req, res, next) => {
     }
 });
 
+router.get('/generateData', (req, res, next) => {
+    try {
+        const pets = generatePets(50);
+        res.json({ status: 'success', payload: pets });
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.post("/generateData", async (req, res) => {
     try {
       console.log("Generating mock data...");
