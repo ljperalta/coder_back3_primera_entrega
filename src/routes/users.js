@@ -23,7 +23,6 @@ router.get('/generateData', (req, res, next) => {
 
 router.post("/generateData", async (req, res) => {
     try {
-      console.log("Generating mock data...");
         const { users = 0, pets = 0 } = req.body;
 
         let createdUsers = 0;
