@@ -1,8 +1,8 @@
 const PetDTO = require("../dto/Pet.dto.js");
-const petsService = require("../services/index.js");
+const { petsService } = require("../services/index.js");
 const dirname = require("../utils/index.js");
 
-const getAllPets = async(req,res)=>{
+const getAllPets = async(req,res,next)=>{
     try {
         const pets = await petsService.getAll();
         console.log("pets");
@@ -12,7 +12,7 @@ const getAllPets = async(req,res)=>{
     }
 }
 
-const createPet = async(req,res)=> {
+const createPet = async(req,res,next)=> {
     try {
         const { name, specie, birthDate } = req.body;
         if (!name || !specie || !birthDate) {
@@ -26,7 +26,7 @@ const createPet = async(req,res)=> {
     }
 }
 
-const updatePet = async(req,res) =>{
+const updatePet = async(req,res,next) =>{
     try {
         const petUpdateBody = req.body;
         const petId = req.params.pid;
@@ -37,7 +37,7 @@ const updatePet = async(req,res) =>{
     }
 }
 
-const deletePet = async(req,res)=> {
+const deletePet = async(req,res,next) => {
     try {
         const petId = req.params.pid;
         const result = await petsService.delete(petId);
@@ -47,7 +47,7 @@ const deletePet = async(req,res)=> {
     }
 }
 
-const createPetWithImage = async(req,res) =>{
+const createPetWithImage = async(req,res,next) =>{
     try {
         const file = req.file;
         const {name,specie,birthDate} = req.body;
