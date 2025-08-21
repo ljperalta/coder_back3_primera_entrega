@@ -13,20 +13,18 @@ const generatePets = (count) => {
 };
 
 const generateMockUser = () => ({
+  _id: new mongoose.Types.ObjectId(),
+  first_name: faker.person.firstName(),
+  last_name: faker.person.lastName(),
+  email: faker.internet.email().toLowerCase(),
   password: hashPassword('coder123'),
-  role: assignRandomRole(),
+  role: faker.helpers.arrayElement(['user', 'admin']),
   pets: [],
 });
 
 const generateUsers = (count) => {
   return Array.from({ length: count }, () => generateMockUser());
 };
-
-function assignRandomRole() {
-  const roles = ['user', 'admin'];
-  const randomIndex = Math.floor(Math.random() * roles.length);
-  return roles[randomIndex];
-}
 
 module.exports = {
   generatePets,
