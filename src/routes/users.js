@@ -12,9 +12,10 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/generateData', (req, res, next) => {
+router.get('/generateData/:cant', (req, res, next) => {
     try {
-        const pets = generatePets(50);
+        const { cant } = req.params;
+        const pets = generatePets(cant);
         res.json({ status: 'success', payload: pets });
     } catch (error) {
         next(error);

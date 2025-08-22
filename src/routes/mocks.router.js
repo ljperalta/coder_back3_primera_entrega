@@ -6,9 +6,10 @@ const { generatePets } = require('../utils/mocking.js');
 
 router.get('/', petsController.getAllPets);
 
-router.get('/mocking', (req, res, next) => {
+router.get('/mocking/:cant', (req, res, next) => {
     try {
-        const pets = generatePets(20);
+        const { cant } = req.params;
+        const pets = generatePets(cant);
         res.json({ status: 'success', payload: pets });
     } catch (error) {
         next(error);
