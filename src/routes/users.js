@@ -22,23 +22,23 @@ router.get('/generateData/:cant', (req, res, next) => {
     }
 });
 
-router.post("/generateData", async (req, res) => {
+router.post("/generateData/users/:cantU/pets/:cantP", async (req, res) => {
     try {
-        const { users = 0, pets = 0 } = req.body;
+        const { cantU, cantP } = req.params;
 
         let createdUsers = 0;
         let createdPets = 0;
 
-        if (users > 0) {
-            const mockUsers = generateUsers(users);
+        if (cantU > 0) {
+            const mockUsers = generateUsers(cantU);
             for (let user of mockUsers) {
                 createdUsers++
                 await usersService.create(user);
             }
         }
 
-        if (pets > 0) {
-            const mockPets = generatePets(pets);
+        if (cantP > 0) {
+            const mockPets = generatePets(cantP);
             for (let pet of mockPets) {
                 createdPets++
                 await petsService.create(pet);
